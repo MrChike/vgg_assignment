@@ -45,27 +45,31 @@ def program():
 
                 # Check Balance
                 if int(transaction_request) == 1:
-                    #global program_user
                     print("Your balance is: ₦ " + str(program_user['balance']))
 
                 # Deposit
                 if int(transaction_request) == 2:
-                    print(
-                        'Action: 1: input("Enter Deposit Amount 2: Add amount to users balance")')
+                    def deposit():
+                        deposit_request = input('Please enter an amount: ')
+                        program_user['balance'] += int(deposit_request)
+                        print("Your New Balance: ₦ " +
+                              str(program_user['balance']))
+                    return deposit()
 
                 # Withdraw
                 if int(transaction_request) == 3:
-                    print('Action: 1: Withdraw')
+                    def withdrawal():
+                        withdrawal_request = input(
+                            'State here your withdrawal amount: ')
+                        if program_user['balance'] <= 0:
+                            return deposit()
+                    return withdrawal()
 
                 # Transfer
                 if int(transaction_request) == 4:
                     print('Action: 1: Transfer')
 
             if password != program_user['password']:
-                create_account()
+                return create_account()
 
     transaction()
-
-
-program()
-print('Static Database: ', f'{str(program_user)}')
