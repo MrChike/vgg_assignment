@@ -61,15 +61,21 @@ def program():
                     def withdrawal():
                         withdrawal_request = input(
                             'State here your withdrawal amount: ')
-                        if program_user['balance'] <= 0:
-                            return deposit()
+                        if program_user['balance'] < int(withdrawal_request):
+                            print('Execute deposit Function')
+
                     return withdrawal()
 
                 # Transfer
                 if int(transaction_request) == 4:
-                    print('Action: 1: Transfer')
-
+                    def transfer():
+                        print('Action: 1: Transfer')
+                    transfer()
             if password != program_user['password']:
                 return create_account()
 
     transaction()
+
+
+program()
+print('Static Database: ', f'{str(program_user)}')
