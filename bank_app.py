@@ -8,6 +8,10 @@ program_user = {
 
 new_program_user = program_user
 
+beneficiary = {
+    'email': '',
+    'balance': 0.0
+}
 
 welcome_message = 'Welcome to the VGG Banking Application Program!\n'
 print(welcome_message)
@@ -26,7 +30,7 @@ def create_account():
     if password_request1 == password_request2:
         program_user['password'] = password_request2
 
-    if email_request not in program_user:
+    if email_request != program_user['email']:
         program_user['email'] = email_request
         print('Account Created Successfuly!')
     else:
@@ -35,28 +39,39 @@ def create_account():
 
 # Check Balance
 def balance():
-    print("Your balance is: ₦ " + str(program_user['balance']))
+    print("Your balance is: ₦ " + str(new_program_user['balance']))
 
 
 # Deposit
 def deposit():
     deposit_request = input('Please enter an amount deposit: ')
-    program_user['balance'] += int(deposit_request)
-    print("Your New Balance: ₦ " +
-          str(program_user['balance']))
+    new_program_user['balance'] += int(deposit_request)
+    print("Your New Balance: ₦ " + str(new_program_user['balance']))
 
 
 # Withdraw
 def withdrawal():
     withdrawal_request = int(input('State here your withdrawal amount: '))
-    if program_user['balance'] < withdrawal_request:
-        return deposit()
+    if new_program_user['balance'] < withdrawal_request:
+        print("Insufficient funds")
+        deposit()
+        withdrawal()
+    if new_program_user['balance'] > withdrawal_request:
+        print(
+            f"Amount Withdrawn: {withdrawal_request}, Available Bal: {new_program_user['balance'] - withdrawal_request}")
 
 
 # Transfer
 def transfer():
-    transfer_recipient = input('Email to Transfer to: ')
+    beneficiary_email = input('Email to Transfer to: ')
+    beneficiary['email'] = beneficiary_email
     transfer_amount = int(input('Key in amount to transfer'))
+    if program_user['balance'] < 0:
+        deposit()
+
+    beneficiary['balance'] = transfer_amount
+    new_program_user['balance'] - transfer_amount
+    print(f"Beneficiary A/c Bal: {beneficiary['balance']}")
 
 
 if account_request == 1:
@@ -66,7 +81,7 @@ if account_request == 1:
 if account_request == 2:
     password = input("Please key in your password: ")
 
-    if password == program_user['password']:
+    if password == new_program_user['password']:
         print('Access Granted')
         transaction_request = input("""
             Press 1 to check balance
