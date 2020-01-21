@@ -52,6 +52,7 @@ def deposit():
 # Withdraw
 def withdrawal():
     withdrawal_request = int(input('State here your withdrawal amount: '))
+    
     if new_program_user['balance'] < withdrawal_request:
         print("Insufficient funds")
         deposit()
@@ -66,6 +67,7 @@ def transfer():
     beneficiary_email = input('Email to Transfer to: ')
     beneficiary['email'] = beneficiary_email
     transfer_amount = int(input('Key in amount to transfer'))
+            
     if program_user['balance'] < 0:
         deposit()
 
