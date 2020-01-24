@@ -2,7 +2,6 @@ program_user = {
     'name': 'chike',
     'email': 'chike.egonu@venturegardenng.com',
     'password': 'chike123',
-    # Lol, Broke Ass Nigga
     'balance': 0.0
 }
 
