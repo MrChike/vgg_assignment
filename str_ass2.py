@@ -29,19 +29,19 @@ program(1000, 2000, 3000)
 
 # 2. Write a Python function that takes a number as a parameter and check the number is prime or not.
 
-# Adjust num variable to validate testing. Thank You!
+def program():
+    num = int(input('Key in a number: '))
+    num_len_list = list(range(1, num + 1))
+    num_len = len(list(range(1, num + 1)))
+    empty_list = []
 
-num = 3
-num_len_list = list(range(1, num + 1))
-num_len = len(list(range(1, num + 1)))
-empty_list = []
+    for i in num_len_list:
+        if len(num_len_list) % i == 0:
+            empty_list.append(i)
 
-for i in num_len_list:
-    if len(num_len_list) % i == 0:
-        empty_list.append(i)
+    if empty_list == [empty_list[0], empty_list[-1]]:
+        print(f"{num} is a prime number")
+    else:
+        print(f"{num} is not a prime number")
 
-if empty_list == [empty_list[0], empty_list[-1]]:
-    print(f"{num} is a prime number")
-else:
-    print(f"{num} is not a prime number")
-
+program()
