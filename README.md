@@ -1,15 +1,13 @@
-# vgg_assignment
-
-Assignment 1: Banking App CLI
-
 Build a command-line Banking Application with the following functionalities:
 
 Application starts with a prompt to the user with the following options:
 
 Press 1: create account
-    Create account: This should prompt you to enter an email/or unique identity, and then a password. You must check your data structure to make sure the account is unique before creating the new account
-
 Press 2: transaction
+
+    1. Create account: This should prompt you to enter an email/or unique identity, and then a password. You must check your data structure to make sure the account is unique before creating the new account
+
+    2. Transaction
     Transaction: Authenticate the user by prompting for a password. 
     
     if the password is correct, user is authenticated and show the following options:
